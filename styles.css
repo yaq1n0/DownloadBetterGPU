@@ -1,3 +1,92 @@
+/* Color Variables - Modern Dark Tech Theme */
+:root {
+    /* Primary Dark Theme Colors */
+    --primary-dark: #0a0a0a;
+    --primary-darker: #000000;
+    --secondary-dark: #1a1a1a;
+    --tertiary-dark: #2a2a2a;
+    
+    /* Techy Accent Colors */
+    --accent-cyan: #00d4ff;
+    --accent-cyan-dark: #0099cc;
+    --accent-electric: #00ffff;
+    --accent-purple: #8b5cf6;
+    --accent-green: #00ff88;
+    --accent-pink: #ff0080;
+    
+    /* Action Colors - Techy Variants */
+    --action-primary: #00d4ff;
+    --action-secondary: #8b5cf6;
+    --action-success: #00ff88;
+    --action-warning: #ffaa00;
+    --action-danger: #ff4444;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #808080;
+    --text-dark: #2a2a2a;
+    
+    /* Background Colors */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --bg-card: #1e1e1e;
+    --bg-modal: rgba(10, 10, 10, 0.95);
+    
+    /* Interactive Colors */
+    --interactive-hover: #333333;
+    --interactive-active: #404040;
+    --border-primary: #333333;
+    --border-accent: #00d4ff;
+    
+    /* Gradient Combinations - Dark Tech Theme */
+    --gradient-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+    --gradient-hero: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #0a0a0a 50%, #2a2a2a 75%, #1a1a1a 100%);
+    --gradient-action: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+    --gradient-accent: linear-gradient(45deg, var(--accent-electric), var(--accent-cyan-dark));
+    --gradient-button: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+    --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+    --gradient-featured: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 50%, #1e1e1e 100%);
+    
+    /* Glows and Effects */
+    --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.3);
+    --glow-purple: 0 0 20px rgba(139, 92, 246, 0.3);
+    --glow-green: 0 0 20px rgba(0, 255, 136, 0.3);
+    
+    /* Semi-transparent Overlays */
+    --overlay-light: rgba(0, 212, 255, 0.1);
+    --overlay-medium: rgba(30, 30, 30, 0.95);
+    --overlay-modal: rgba(0, 0, 0, 0.8);
+    --overlay-border: rgba(0, 212, 255, 0.2);
+    --overlay-warning: rgba(255, 170, 0, 0.2);
+    --overlay-glass: rgba(255, 255, 255, 0.05);
+}
+
+/* 
+EASY THEMING EXAMPLE:
+To create a dark theme, simply override these variables:
+
+:root {
+    --primary-blue: #1a1a2e;
+    --primary-purple: #16213e;
+    --accent-teal: #0f3460;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --bg-white: #2a2a2a;
+    --overlay-medium: rgba(42, 42, 42, 0.95);
+    --gradient-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+Or for a warm theme:
+:root {
+    --primary-blue: #ff6b6b;
+    --primary-purple: #feca57;
+    --accent-teal: #48cae4;
+    --gradient-primary: linear-gradient(135deg, #ff9a56 0%, #ffd23f 100%);
+}
+*/
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -14,8 +103,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-primary);
+    background: var(--gradient-hero);
     min-height: 100vh;
     overscroll-behavior: none; /* Prevent elastic scrolling */
     position: relative;
@@ -35,9 +124,9 @@ body {
 
 /* Header styles */
 .navbar {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-light);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--overlay-border);
     position: fixed;
     top: 0;
     width: 100%;
@@ -54,7 +143,7 @@ body {
 }
 
 .nav-logo h1 {
-    color: white;
+    color: var(--text-light);
     font-size: 1.5rem;
     font-weight: 700;
 }
@@ -66,7 +155,7 @@ body {
 }
 
 .nav-menu a {
-    color: white;
+    color: var(--text-light);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.3s ease;
@@ -80,7 +169,7 @@ body {
 .hero {
     padding: 120px 0 80px;
     text-align: center;
-    color: white;
+    color: var(--text-light);
 }
 
 .hero-title {
@@ -105,8 +194,8 @@ body {
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(45deg, #ff6b6b, #feca57);
-    color: white;
+    background: var(--gradient-action);
+    color: var(--text-light);
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
@@ -123,7 +212,7 @@ body {
 
 /* GPU section */
 .gpu-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--overlay-medium);
     padding: 80px 0;
     margin: 0 20px;
     border-radius: 20px;
@@ -134,13 +223,13 @@ body {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .section-subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 3rem;
 }
 
@@ -152,7 +241,7 @@ body {
 }
 
 .gpu-card {
-    background: white;
+    background: var(--bg-white);
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
@@ -168,12 +257,12 @@ body {
 }
 
 .gpu-card.featured {
-    border: 2px solid #4ecdc4;
+    border: 2px solid var(--accent-teal);
     transform: scale(1.05);
 }
 
 .gpu-card.premium {
-    border: 2px solid #ffd700;
+    border: 2px solid var(--accent-gold);
 }
 
 .popular-badge, .premium-badge {
@@ -181,8 +270,8 @@ body {
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background: #4ecdc4;
-    color: white;
+    background: var(--accent-teal);
+    color: var(--text-light);
     padding: 5px 15px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -190,8 +279,8 @@ body {
 }
 
 .premium-badge {
-    background: #ffd700;
-    color: #333;
+    background: var(--accent-gold);
+    color: var(--text-primary);
 }
 
 .gpu-icon {
@@ -202,7 +291,7 @@ body {
 .gpu-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .gpu-specs {
@@ -211,16 +300,16 @@ body {
 
 .gpu-specs p {
     margin-bottom: 0.5rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .gpu-specs strong {
-    color: #333;
+    color: var(--text-primary);
 }
 
 .download-btn {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
+    background: var(--gradient-button);
+    color: var(--text-light);
     border: none;
     padding: 12px 25px;
     border-radius: 25px;
@@ -238,9 +327,9 @@ body {
 
 /* About section */
 .about-section {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-light);
     padding: 80px 0;
-    color: white;
+    color: var(--text-light);
     margin: 40px 20px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
@@ -275,7 +364,7 @@ body {
 
 /* Contact section */
 .contact-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--overlay-medium);
     padding: 60px 0;
     margin: 0 20px;
     border-radius: 20px;
@@ -291,8 +380,8 @@ body {
 
 .social-link {
     display: inline-block;
-    background: #667eea;
-    color: white;
+    background: var(--primary-blue);
+    color: var(--text-light);
     padding: 10px 20px;
     border-radius: 25px;
     text-decoration: none;
@@ -300,21 +389,21 @@ body {
 }
 
 .social-link:hover {
-    background: #764ba2;
+    background: var(--primary-purple);
 }
 
 /* Footer */
 footer {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: var(--bg-dark);
+    color: var(--text-light);
     text-align: center;
     padding: 2rem 0;
     margin-top: 40px;
 }
 
 .disclaimer {
-    background: rgba(255, 193, 7, 0.2);
-    border: 1px solid #ffc107;
+    background: var(--overlay-warning);
+    border: 1px solid var(--accent-warning);
     border-radius: 10px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -330,12 +419,12 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--overlay-modal);
     backdrop-filter: blur(5px);
 }
 
 .modal-content {
-    background-color: white;
+    background-color: var(--bg-white);
     margin: 15% auto;
     padding: 2rem;
     border-radius: 15px;
@@ -347,7 +436,7 @@ footer {
 }
 
 .close {
-    color: #aaa;
+    color: var(--interactive-gray);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -358,13 +447,13 @@ footer {
 }
 
 .close:hover {
-    color: black;
+    color: var(--interactive-black);
 }
 
 .progress-bar {
     width: 100%;
     height: 20px;
-    background-color: #f0f0f0;
+    background-color: var(--bg-light-gray);
     border-radius: 10px;
     overflow: hidden;
     margin: 1rem 0;
@@ -372,7 +461,7 @@ footer {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: var(--gradient-button);
     width: 0%;
     transition: width 0.3s ease;
     border-radius: 10px;
@@ -385,7 +474,7 @@ footer {
 }
 
 .download-status {
-    color: #666;
+    color: var(--text-secondary);
     font-style: italic;
 }
 

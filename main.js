@@ -12,15 +12,16 @@ const CONFIG = {
 
 const downloadMessages = [
   "Initializing quantum GPU transmission...",
-  "Scanning PCIe slots...",
-  "Allocating virtual memory buffer...",
+  "Scanning PCIe 5.0 slots...",
+  "Allocating DDR5 memory buffer...",
   "Downloading GPU microcode...",
-  "Transmitting CUDA cores...",
-  "Installing ray tracing units...",
-  "Configuring memory controllers...",
+  "Transmitting CUDA/Stream processors...",
+  "Installing 4th-gen ray tracing units...",
+  "Configuring GDDR7 memory controllers...",
   "Optimizing shader pipelines...",
-  "Calibrating cooling systems...",
-  "Finalizing installation...",
+  "Calibrating advanced cooling systems...",
+  "Materializing silicon via quantum tunneling...",
+  "Finalizing RTX 50-series installation...",
   "GPU successfully downloaded!",
 ];
 
@@ -31,13 +32,15 @@ const consoleEasterEgg = `
     ║   🚀 Quantum GPU Transmission API    ║
     ║      Successfully Initialized!       ║
     ║                                      ║
+    ║   2025 Edition - Now with RTX 5090   ║
     ║   Warning: This is a parody site     ║
     ║   You cannot actually download       ║
     ║   physical hardware! 😄              ║
     ╚══════════════════════════════════════╝
     
-    Fun fact: You're more likely to download a GPU
-    than to find one in stock at MSRP! 😅
+    Fun fact: With RTX 5090's 32GB VRAM, you could 
+    download the entire internet... if downloading
+    GPUs actually worked! 😅
     `;
 
 /**
@@ -152,17 +155,17 @@ const initDownloadModal = () => {
             <span class="close">&times;</span>
             <div style="text-align: center; padding: 2rem;">
                 <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
-                <h2 style="color: #4ecdc4; margin-bottom: 1rem;">Download Complete!</h2>
+                <h2 style="color: var(--accent-teal); margin-bottom: 1rem;">Download Complete!</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 1rem;">
                     Your <strong>${gpuName}</strong> has been successfully downloaded!
                 </p>
-                <p style="color: #666; margin-bottom: 2rem;">
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
                     Please restart your computer to complete the installation.
                     Your new GPU should appear in Device Manager after reboot.
                 </p>
                 <button onclick="location.reload()" style="
-                    background: linear-gradient(45deg, #4ecdc4, #44a08d);
-                    color: white;
+                    background: var(--gradient-accent);
+                    color: var(--text-light);
                     border: none;
                     padding: 12px 25px;
                     border-radius: 25px;

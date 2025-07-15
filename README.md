@@ -12,11 +12,11 @@ Inspired by the legendary [downloadmoreram.com](https://downloadmoreram.com/), t
 
 ## 🎮 Features
 
-- **Quantum GPU Transmission**: Download RTX 4090s straight through your internet connection
-- **Zero Installation**: No screwdrivers required - GPUs materialize in your PCIe slot automatically
-- **100% Free**: Why pay thousands when you can download for free?
-- **Realistic Progress Bars**: Complete with authentic technical jargon like "Transmitting CUDA cores..."
-- **Multiple GPU Options**: From budget GTX 1650 to premium RTX 4090
+- **Quantum GPU Transmission**: Download RTX 5090s with 32GB GDDR7 straight through your internet connection
+- **Zero Installation**: No screwdrivers required - GPUs materialize in your PCIe 5.0 slot automatically
+- **100% Free**: Why pay $2000+ when you can download for free?
+- **Realistic Progress Bars**: Complete with authentic technical jargon like "Transmitting CUDA/Stream processors..."
+- **Multiple GPU Options**: From budget Intel ARC B580 to ultimate RTX 5090
 - **Mobile Responsive**: Download GPUs on the go!
 
 ## 🛠 Tech Stack
@@ -24,7 +24,7 @@ Inspired by the legendary [downloadmoreram.com](https://downloadmoreram.com/), t
 This cutting-edge application is built with:
 
 - **HTML5**: For structure (obviously)
-- **CSS3**: With gradients so beautiful they'll make your eyes water
+- **CSS3**: With gradients so beautiful they'll make your RTX 5090 weep
 - **Vanilla JavaScript**: No frameworks needed when you have pure quantum physics
 - **GitHub Pages**: Free hosting for free GPU downloads (it's free all the way down)
 
@@ -53,10 +53,10 @@ git clone https://github.com/yaq1n0/downloadbettergpu.git
 ## 🎯 FAQ
 
 **Q: Does this actually download a GPU to my computer?**  
-A: Of course not! This is a joke website. If you could actually download hardware, I'd be running Apple by now.
+A: Of course not! This is a joke website. If you could actually download hardware, Intel wouldn't have needed to make the ARC B580 so affordable.
 
 **Q: Why did you make this?**  
-A: I was tired of seeing "$1,899 - Out of Stock" everywhere and decided channeling my frustration into code was healthier than crying.
+A: I was tired of seeing "$1,999 - Out of Stock" on RTX 5090 listings everywhere and decided channeling my frustration into code was healthier than crying.
 
 **Q: Can you make one for CPUs?**  
 A: Already working on "Download Better CPU" - coming to a GitHub near you!
@@ -77,15 +77,16 @@ MIT License - Feel free to fork and create your own hardware download empire.
 ## 🙏 Acknowledgments
 
 - **[downloadmoreram.com](https://downloadmoreram.com/)** - The OG that inspired this madness
-- **NVIDIA & AMD** - For making GPUs so expensive that downloading them seems reasonable
-- **Crypto miners** - For making us all collectively lose our minds
+- **NVIDIA & AMD & Intel** - For making GPUs so expensive that downloading them seems reasonable
+- **Crypto miners** - For making us all collectively lose our minds (again)
+- **AI Datacenters** - For buying up all of TSMC's wafer capacity
 - **The laws of physics** - Sorry for temporarily ignoring you
 
 ## ⚠️ Disclaimer
 
 This is a parody website. You cannot actually download physical hardware components over the internet. If this worked, we'd all be rich and GPU shortages would be a thing of the past.
 
-Please buy graphics cards from legitimate retailers (when they're actually in stock at reasonable prices, which is... never).
+Please buy graphics cards from legitimate retailers (when they're actually in stock at reasonable prices, which is... still never).
 
 ---
 
