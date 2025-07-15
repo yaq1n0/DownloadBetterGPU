@@ -1,22 +1,74 @@
-// Wait for DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // Smooth scrolling for navigation links
+// Configuration constants
+const CONFIG = {
+  PARTICLE_INTERVAL: 200, //ms
+  PARTICLE_LIFETIME: 8000, //ms
+  PROGRESS_MIN: 5, //%
+  PROGRESS_MAX: 20, //%
+  PROGRESS_INTERVAL_MIN: 200, //ms
+  PROGRESS_INTERVAL_MAX: 500, //ms
+  FLOAT_ANIMATION_SPEED: 100, //ms
+  COMPLETION_DELAY: 1000, //ms
+};
+
+const downloadMessages = [
+  "Initializing quantum GPU transmission...",
+  "Scanning PCIe slots...",
+  "Allocating virtual memory buffer...",
+  "Downloading GPU microcode...",
+  "Transmitting CUDA cores...",
+  "Installing ray tracing units...",
+  "Configuring memory controllers...",
+  "Optimizing shader pipelines...",
+  "Calibrating cooling systems...",
+  "Finalizing installation...",
+  "GPU successfully downloaded!",
+];
+
+const consoleEasterEgg = `
+    ╔══════════════════════════════════════╗
+    ║        DOWNLOAD BETTER GPU           ║
+    ║                                      ║
+    ║   🚀 Quantum GPU Transmission API    ║
+    ║      Successfully Initialized!       ║
+    ║                                      ║
+    ║   Warning: This is a parody site     ║
+    ║   You cannot actually download       ║
+    ║   physical hardware! 😄              ║
+    ╚══════════════════════════════════════╝
+    
+    Fun fact: You're more likely to download a GPU
+    than to find one in stock at MSRP! 😅
+    `;
+
+/**
+ * Initialize smooth scrolling for navigation links
+ */
+const initSmoothScrolling = () => {
   const navLinks = document.querySelectorAll('a[href^="#"]');
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       const targetId = this.getAttribute("href");
       const targetSection = document.querySelector(targetId);
+
       if (targetSection) {
-        targetSection.scrollIntoView({
+        const headerHeight =
+          document.querySelector(".navbar")?.offsetHeight || 70;
+        const targetPosition = targetSection.offsetTop - headerHeight + 10;
+
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
           behavior: "smooth",
-          block: "start",
         });
       }
     });
   });
+};
 
-  // Download button functionality
+/**
+ * Initialize download modal functionality
+ */
+const initDownloadModal = () => {
   const downloadButtons = document.querySelectorAll(".download-btn");
   const modal = document.getElementById("download-modal");
   const closeBtn = document.querySelector(".close");
@@ -25,29 +77,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressText = document.querySelector(".progress-text");
   const downloadStatus = document.querySelector(".download-status");
 
-  const downloadMessages = [
-    "Initializing quantum GPU transmission...",
-    "Scanning PCIe slots...",
-    "Allocating virtual memory buffer...",
-    "Downloading GPU microcode...",
-    "Transmitting CUDA cores...",
-    "Installing ray tracing units...",
-    "Configuring memory controllers...",
-    "Optimizing shader pipelines...",
-    "Calibrating cooling systems...",
-    "Finalizing installation...",
-    "GPU successfully downloaded!",
-  ];
+  // Error handling for missing elements
+  if (!modal || !progressFill || !progressText || !downloadStatus) {
+    console.warn("Download modal elements not found");
+    return;
+  }
 
   downloadButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const gpuName = this.getAttribute("data-gpu");
-      startDownload(gpuName);
+      if (gpuName) {
+        startDownload(gpuName);
+      }
     });
   });
 
+  /**
+   * Start the fake download process
+   * @param {string} gpuName - Name of the GPU being "downloaded"
+   */
   function startDownload(gpuName) {
-    gpuNameSpan.textContent = gpuName;
+    if (gpuNameSpan) gpuNameSpan.textContent = gpuName;
     modal.style.display = "block";
 
     // Reset progress
@@ -60,7 +110,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let messageIndex = 0;
 
     const progressInterval = setInterval(() => {
-      progress += Math.random() * 15 + 5; // Random progress between 5-20%
+      progress +=
+        Math.random() * (CONFIG.PROGRESS_MAX - CONFIG.PROGRESS_MIN) +
+        CONFIG.PROGRESS_MIN;
 
       if (progress > 100) {
         progress = 100;
@@ -68,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
           showCompletionMessage(gpuName);
-        }, 1000);
+        }, CONFIG.COMPLETION_DELAY);
       }
 
       progressFill.style.width = progress + "%";
@@ -85,11 +137,17 @@ document.addEventListener("DOMContentLoaded", function () {
         messageIndex = newMessageIndex;
         downloadStatus.textContent = downloadMessages[messageIndex];
       }
-    }, 200 + Math.random() * 300); // Random interval between 200-500ms
+    }, CONFIG.PROGRESS_INTERVAL_MIN + Math.random() * (CONFIG.PROGRESS_INTERVAL_MAX - CONFIG.PROGRESS_INTERVAL_MIN));
   }
 
+  /**
+   * Show completion message after download finishes
+   * @param {string} gpuName - Name of the downloaded GPU
+   */
   function showCompletionMessage(gpuName) {
     const modalContent = modal.querySelector(".modal-content");
+    if (!modalContent) return;
+
     modalContent.innerHTML = `
             <span class="close">&times;</span>
             <div style="text-align: center; padding: 2rem;">
@@ -117,15 +175,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Re-attach close functionality
     const newCloseBtn = modalContent.querySelector(".close");
-    newCloseBtn.addEventListener("click", closeModal);
+    if (newCloseBtn) {
+      newCloseBtn.addEventListener("click", closeModal);
+    }
   }
 
+  /**
+   * Close the download modal
+   */
   function closeModal() {
     modal.style.display = "none";
   }
 
   // Close modal functionality
-  closeBtn.addEventListener("click", closeModal);
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
 
   // Close modal when clicking outside
   window.addEventListener("click", function (event) {
@@ -133,8 +198,12 @@ document.addEventListener("DOMContentLoaded", function () {
       closeModal();
     }
   });
+};
 
-  // Add some fun hover effects to GPU cards
+/**
+ * Initialize GPU card hover effects
+ */
+const initGPUCardEffects = () => {
   const gpuCards = document.querySelectorAll(".gpu-card");
   gpuCards.forEach((card) => {
     card.addEventListener("mouseenter", function () {
@@ -149,27 +218,38 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+};
 
-  // Add floating animation to hero section
+/**
+ * Initialize floating animation for hero title
+ */
+const initFloatingAnimation = () => {
   const heroTitle = document.querySelector(".hero-title");
-  if (heroTitle) {
-    let floatDirection = 1;
-    setInterval(() => {
-      const currentTransform = heroTitle.style.transform || "translateY(0px)";
-      const currentY = parseFloat(
-        currentTransform.match(/translateY\(([^)]+)px\)/) || [0, 0]
-      )[1];
+  if (!heroTitle) return;
 
-      if (currentY > 5) floatDirection = -1;
-      if (currentY < -5) floatDirection = 1;
+  let floatDirection = 1;
+  setInterval(() => {
+    const currentTransform = heroTitle.style.transform || "translateY(0px)";
+    const currentY = parseFloat(
+      currentTransform.match(/translateY\(([^)]+)px\)/) || [0, 0]
+    )[1];
 
-      heroTitle.style.transform = `translateY(${
-        currentY + floatDirection * 0.5
-      }px)`;
-    }, 100);
-  }
+    if (currentY > 5) floatDirection = -1;
+    if (currentY < -5) floatDirection = 1;
 
-  // Add particle effect to background (simple version)
+    heroTitle.style.transform = `translateY(${
+      currentY + floatDirection * 0.5
+    }px)`;
+  }, CONFIG.FLOAT_ANIMATION_SPEED);
+};
+
+/**
+ * Initialize particle background effect
+ */
+const initParticleEffect = () => {
+  /**
+   * Create a single floating particle
+   */
   function createParticle() {
     const particle = document.createElement("div");
     particle.style.cssText = `
@@ -182,14 +262,18 @@ document.addEventListener("DOMContentLoaded", function () {
             z-index: -1;
             left: ${Math.random() * 100}vw;
             top: 100vh;
-            animation: float-up 8s linear forwards;
+            animation: float-up ${
+              CONFIG.PARTICLE_LIFETIME / 1000
+            }s linear forwards;
         `;
 
     document.body.appendChild(particle);
 
     setTimeout(() => {
-      particle.remove();
-    }, 8000);
+      if (particle.parentNode) {
+        particle.remove();
+      }
+    }, CONFIG.PARTICLE_LIFETIME);
   }
 
   // Add particle animation CSS
@@ -205,22 +289,26 @@ document.addEventListener("DOMContentLoaded", function () {
   document.head.appendChild(style);
 
   // Create particles periodically
-  setInterval(createParticle, 500);
+  setInterval(createParticle, CONFIG.PARTICLE_INTERVAL);
+};
 
-  // Add console easter egg
-  console.log(`
-    ╔══════════════════════════════════════╗
-    ║        DOWNLOAD BETTER GPU           ║
-    ║                                      ║
-    ║   🚀 Quantum GPU Transmission API    ║
-    ║      Successfully Initialized!       ║
-    ║                                      ║
-    ║   Warning: This is a parody site     ║
-    ║   You cannot actually download       ║
-    ║   physical hardware! 😄              ║
-    ╚══════════════════════════════════════╝
-    
-    Fun fact: You're more likely to download a GPU
-    than to find one in stock at MSRP! 😅
-    `);
-});
+/**
+ * Main initialization function
+ */
+const init = () => {
+  try {
+    initSmoothScrolling();
+    initDownloadModal();
+    initGPUCardEffects();
+    initFloatingAnimation();
+    initParticleEffect();
+
+    // Add console easter egg
+    console.log(consoleEasterEgg);
+  } catch (error) {
+    console.error("Error initializing Download Better GPU:", error);
+  }
+};
+
+// Initialize when DOM is ready
+document.addEventListener("DOMContentLoaded", init);
