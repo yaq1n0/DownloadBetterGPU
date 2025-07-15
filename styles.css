@@ -5,12 +5,26 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none; /* Prevent elastic scrolling */
+    height: 100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: #333;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
+    overscroll-behavior: none; /* Prevent elastic scrolling */
+    position: relative;
+    background-attachment: fixed; /* Prevent background from scrolling past boundaries */
+}
+
+/* Prevent overscroll on all scrollable elements */
+* {
+    overscroll-behavior: none;
 }
 
 .container {
